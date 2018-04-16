@@ -1,0 +1,117 @@
+<form class="form-horizontal" [formGroup]='signupForm'>
+        
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Admin User Signup</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row" *ngIf="success">
+            <div class="col-md-9 alert alert-success">
+                <p>Thank Your for showing intrest.</p>
+                <p> A verification email is sent. 
+                    Please verify your email id to access your account.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <input matInput  type="text" formControlName="name" class="form-control" id="name" placeholder="John Doe"  autofocus>
+                    </mat-form-field>
+                </div>
+                <div class="form-control-feedback" *ngIf="signupForm.get('name').touched && signupForm.get('name').invalid">
+                        <span class="text-danger">
+                            <i class="fa fa-close" *ngIf="signupForm.get('name').errors.required">Name is required</i>
+                        </span>
+                        <span class="text-danger">
+                                <i class="fa fa-close" *ngIf="signupForm.get('name').errors.minlength">Minimum length  is {{signupForm.get('name').errors.minlength.requiredLength}}</i>
+                        </span>
+                </div>
+                </div>
+            </div>
+            
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input type="text" formControlName="email" class="form-control" id="email"
+                               placeholder="you@example.com" required autofocus>
+                    </div>
+                
+                  <div class="form-control-feedback" *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
+                          <span class="text-danger" *ngIf="signupForm.get('email').errors.required">
+                                  <i class="fa fa-close">Email is required</i>
+                          </span>
+                          <span class="text-danger" *ngIf="signupForm.get('email').errors.email">
+                                  <i class="fa fa-close">Must be a valid email</i>
+                          </span>
+                          <span class="text-danger" *ngIf="signupForm.get('email').errors.isEmailExists">
+                            <i class="fa fa-close">Email Id already exists.</i>
+                          </span>
+                          
+                  </div>
+                 
+              </div>
+            </div>
+        </div>
+           
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input type="password" formControlName="password" class="form-control" id="password"
+                               placeholder="Password" required>
+                    </div>
+                
+                    <div class="form-control-feedback" *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid">
+                          <span class="text-danger" *ngIf="signupForm.get('password').errors.required">
+                                  <i class="fa fa-close">Password is required</i>
+                          </span>
+                  </div>
+          </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Confirm Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input type="password" formControlName="confirm_password" class="form-control"
+                               id="password-confirm" placeholder="Password" required>
+                    </div>
+                    <div class="form-control-feedback" *ngIf="signupForm.get('confirm_password').touched && signupForm.get('confirm_password').invalid">
+                          <span class="text-danger" *ngIf="signupForm.get('confirm_password').errors.required">
+                              <i class="fa fa-close">Confirm Password is required</i>
+                          </span>
+                         
+                  </div>
+                  <div class="form-control-feedback" *ngIf="signupForm.get('confirm_password').touched">
+                        <span class="text-danger" *ngIf="signupForm.errors && signupForm.errors.match_password">
+                            <i class="fa fa-close">Password and Confirm Password must be same.</i>
+                        </span>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success" [disabled]='signupForm.invalid' (click)="saveUser();"><i class="fa fa-user-plus"></i> Register</button>
+                <a class="btn btn-primary" routerLink="/login"><i class="fa fa-arrow-left"></i> Login</a>
+            </div>
+        </div>
+      </form>

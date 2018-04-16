@@ -1,0 +1,4 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+.full-width{ width: 99.9%}
+.mat-headline{ color: #870000}

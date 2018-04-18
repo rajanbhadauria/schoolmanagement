@@ -17,7 +17,7 @@ var port = process.env.PORT | 8000;
 mongoose.connect(config.getDbConnectionString());
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-app.use(express.static('public/dist'));
+app.use(express.static('public'));
 
 // verify admin email 
 adminController(app);

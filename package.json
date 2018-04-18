@@ -4,9 +4,8 @@
   "description": "School Management System",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run build",
-    "start": "node server.js" 
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "keywords": [
     "School",

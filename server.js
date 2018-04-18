@@ -17,7 +17,7 @@ var port = process.env.PORT | 8000;
 mongoose.connect(config.getDbConnectionString());
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-app.use(express.static(appRoot + '/public/dist'));
+app.use(express.static('public/dist'));
 
 // verify admin email 
 adminController(app);
@@ -25,6 +25,6 @@ feeController(app);
 // for unhandeled  url
 homeController(app);
 
-app.listen(port, '0.0.0.0', function() {
+app.listen(port, function() {
     console.log("Listening on Port "+port);
     });

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FeestructureService } from './feestructure.service';
 
 @Component({
-  selector: 'app-feestructure',
+  selector: 'feestructure',
   templateUrl: './feestructure.component.html',
   styleUrls: ['./feestructure.component.css']
 })
@@ -13,7 +13,7 @@ export class FeestructureComponent implements OnInit {
   successMsg;
   fee_structure_data: any;
   p: number = 1;
-  showSettingNav: boolean = false;
+ // showSettingNav: boolean = false;
   constructor(private FeeServices: FeestructureService) { }
   ngOnInit() {
 

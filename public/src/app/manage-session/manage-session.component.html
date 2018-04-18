@@ -1,3 +1,45 @@
-<p>
-  manage-session works!
-</p>
+<form novalidate [formGroup]="session_form">
+  <input type="hidden" name="_id" formControlName="_id">
+
+    <legend>Manage School Sessions</legend>
+    <div class="alert alert-danger alert-dark">{{ error_msg }}</div>
+<div class="row form-group">
+    <div class="col-4">Session Name</div>
+    <div class="col-4">
+      <input name="session_title" formControlName="session_title" class="form-control">
+      <div class="alert alert-danger" *ngIf="session_form.get('session_title').touched && session_form.get('session_title').invalid ">
+        Session Name is required filed.
+      </div>
+    </div>
+    <div class="col-4">
+      <button type="submit" class="btn btn-success" (click)='saveSession();'><i class="fa fa-save"></i> Save</button>
+      <a type="submit" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Cancel</a>
+    </div>
+</div>
+</form>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Session Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!session_lists">
+        <td colspan="4">
+          <div class="alert alert-warning">Data not found.</div>
+        </td>
+      </tr>
+      <tr *ngFor="let session of session_lists | paginate: { itemsPerPage: 5, currentPage: p }">
+        <td>{{ session.session_title }}</td>
+        <td>
+        <a  (click)="editSession(session)">
+            <i class="fa fa-pencil text-danger"></i>
+        </a>
+  
+        
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event" *ngIf="session_lists"></pagination-controls>

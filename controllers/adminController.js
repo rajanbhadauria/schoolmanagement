@@ -87,7 +87,8 @@ module.exports = function(app){
                     message: 'You are loged in successfully.',
                     token: token,
                     userId: user._id,
-                    name: user.name
+                    name: user.name,
+                    session_id: post.session_id
                 });
 
         }).catch(next);

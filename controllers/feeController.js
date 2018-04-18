@@ -55,6 +55,38 @@ module.exports = function(app)
             return res.status(200).send(feestr);
         });        
     });
+
+    // create and update school session controller
+
+    app.post('/save-school-session', function(req, res){
+        post = req.body;
+        if(post._id)
+        { console.log(post);
+            feeModel.sessionModel.findByIdAndUpdate(post._id, post,
+            function(err, feeStrus){
+                    if(err)
+                        throw err;         
+                        return res.status(200).send(feeStrus);
+                    });
+        }
+        else
+        {
+            var sessionData = new feeModel.sessionModel(post);
+                sessionData.save().then(function(result){
+                    res.status(200).send(result);
+                }, err=>{
+                    if(err) throw err;
+                });
+        }
+        
+    });
+
+   app.get('/list-session', function(req, res){
+       feeModel.sessionModel.find({},'_id session_title', function(err, result){
+            if(err) throw err;
+            res.status(200).send(result);
+       })
+   });
 }
 
     

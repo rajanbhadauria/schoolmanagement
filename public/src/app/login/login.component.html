@@ -1,11 +1,11 @@
 <div class="container py-5">
-  <div class="row">
-      <div class="col-md-12">
-          <div class="row">
-              <div class="col-md-9 mx-auto">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9 mx-auto">
 
-                  <!-- form card login -->
-                  <div class="card rounded-0">
+                    <!-- form card login -->
+                    <div class="card rounded-0">
                         <div class="card-header">
                             <h3 class="mb-0">Login</h3>
                         </div>
@@ -15,43 +15,55 @@
                                     <label for="email">Email</label>
                                     <input type="email" formControlName="email" class="form-control form-control-lg rounded-0" name="email" id="email" required="">
                                     <div class="form-control-feedback" *ngIf="loginFrom.get('email').touched && loginFrom.get('email').invalid">
-                                      <span class="text-danger" *ngIf="loginFrom.get('email').errors.required">
-                                              <i class="fa fa-close">Email is required</i>
-                                      </span>
-                                      <span class="text-danger" *ngIf="loginFrom.get('email').errors.email">
-                                              <i class="fa fa-close">Must be a valid email</i>
-                                      </span>
-                                      
-                                      
-                              </div>
+                                        <span class="text-danger" *ngIf="loginFrom.get('email').errors.required">
+                                            <i class="fa fa-close">Email is required</i>
+                                        </span>
+                                        <span class="text-danger" *ngIf="loginFrom.get('email').errors.email">
+                                            <i class="fa fa-close">Must be a valid email</i>
+                                        </span>
+
+
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" formControlName="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
                                     <div class="form-control-feedback" *ngIf="loginFrom.get('password').touched && loginFrom.get('password').invalid">
-                                      <span class="text-danger" *ngIf="loginFrom.get('password').errors.required">
-                                              <i class="fa fa-close">Password is required</i>
-                                      </span>
+                                        <span class="text-danger" *ngIf="loginFrom.get('password').errors.required">
+                                            <i class="fa fa-close">Password is required</i>
+                                        </span>
                                     </div>
-                                    
+
                                 </div>
-                                
-                                <button type="submit" class="btn btn-primary btn-lg float-left" id="btnLogin">Cancel</button> 
-                                 <button type="submit" class="btn btn-success btn-lg float-right" (click)="loginUser()" id="btnLogin"  [disabled]="loginFrom.invalid">Login</button>
+                                <div class="form-group">
+                                        <label>Session</label>
+                                        <select name="session_id" formControlName = "session_id" class="form-control mat-select">
+                                            <option *ngFor="let session of session_list" value="{{ session._id }}">{{ session.session_title }}</option>
+                                        </select>
+                                        <div class="form-control-feedback" *ngIf="loginFrom.get('password').touched && loginFrom.get('password').invalid">
+                                          <span class="text-danger" *ngIf="loginFrom.get('password').errors.required">
+                                                  <i class="fa fa-close">Password is required</i>
+                                          </span>
+                                        </div>
+                                        
+                                    </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg float-left" id="btnLogin">Cancel</button>
+                                <button type="submit" class="btn btn-success btn-lg float-right" (click)="loginUser()" id="btnLogin" [disabled]="loginFrom.invalid">Login</button>
                             </form>
                         </div>
                         <!--/card-block-->
                     </div>
                     <!-- /form card login -->
 
-              </div>
+                </div>
 
 
-          </div>
-          <!--/row-->
+            </div>
+            <!--/row-->
 
-      </div>
-      <!--/col-->
-  </div>
-  <!--/row-->
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
 </div>

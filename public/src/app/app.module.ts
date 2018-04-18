@@ -21,6 +21,7 @@ import { AuthGaurd } from './common_helper/auth-gaurd.service';
 import { FeestructureComponent } from './feestructure/feestructure.component';
 import { FeestructureService } from './feestructure/feestructure.service';
 import { ManageSessionComponent } from './manage-session/manage-session.component';
+import { ManageSessionService } from './manage-session/manage-session.service';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ManageSessionComponent } from './manage-session/manage-session.componen
     ErrorService,
     LoginService,
     FeestructureService,
+    ManageSessionService,
     AuthGaurd
   ],
   bootstrap: [AppComponent]

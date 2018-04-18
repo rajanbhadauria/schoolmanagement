@@ -9,4 +9,11 @@ var feeStructureSchema = new Schema({
 });
 var fee_structure = mongoose.model('fee_structure', feeStructureSchema);
 
-module.exports = {feeStructure: fee_structure} ;
+var sessionSchema = new Schema({
+    session_title: String,
+    sort_by: Number
+});
+
+var sessionModel = mongoose.model('school_sessions',sessionSchema);
+
+module.exports = {feeStructure: fee_structure, sessionModel: sessionModel} ;
